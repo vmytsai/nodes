@@ -8,12 +8,11 @@ if exists curl; then
 	echo ''
 else
   sudo apt update && sudo apt install curl -y < "/dev/null"
-
+fi
 if exists jq; then
 	echo ''
 else
   sudo apt update && sudo apt install jq -y < "/dev/null"
-
 fi
 bash_profile=$HOME/.bash_profile
 if [ -f "$bash_profile" ]; then
@@ -29,9 +28,7 @@ VER=$(wget -qO- https://api.github.com/repos/subspace/subspace/releases | jq '.[
 wget https://github.com/subspace/subspace/releases/download/${VER}/subspace-farmer-ubuntu-x86_64-${VER} -qO subspace-farmer; \
 wget https://github.com/subspace/subspace/releases/download/${VER}/subspace-node-ubuntu-x86_64-${VER} -qO subspace-node; \
 sudo chmod +x * && \
-if [[ $(./subspace-farmer --version) == "" || $(./subspace-node --version) == "" ]]; then
-  echo -e "\n\nWTF?!? \e[31mSomething went wrong!! Update not installed :(\e[39m\n"
-else
+if [[ $(./subspace-farmer --version) != "" || $(./subspace-node --version) != "" ]]; then
   sudo mv * /usr/local/bin/ && \
   FARMER_V=$(echo $(subspace-farmer --version) | grep -ow '[0-9]*.[0-9]*.[0-9]*') && \
   SUBSPACE_V=$(echo $(subspace-node --version) | grep -ow '[0-9]*.[0-9]*.*') && \
@@ -48,4 +45,6 @@ else
   echo -e "\n\e[40m\e[92mUpdate installed!!\e[0m\n"
   echo -e "Check block height:\n\e[42msudo journalctl -fu subspaced -o cat | grep -Eo 'best: #[0-9]*'\e[0m\n"
   echo -e "Check log:\n\e[42msudo journalctl -u subspaced-farmer -f -o cat\e[0m"
+else
+  echo -e "\n\nWTF?!? \e[31mSomething went wrong!!\e[39m Update not installed :("
 fi
