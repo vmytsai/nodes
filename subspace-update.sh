@@ -15,7 +15,7 @@ if [ -f "$bash_profile" ]; then
 fi
 sleep 1 && curl -s https://raw.githubusercontent.com/Vlad-Mytsai/nodes/main/logo.sh | bash && sleep 1
 
-echo -e "\n\nUpdating... Please wait :)\n\n"
+echo -e "\n\nUpdating... Please wait :)\n"
 
 mkdir $HOME/subspace >/dev/null 2>&1 && \
 cd $HOME/subspace && \
@@ -29,7 +29,7 @@ else
   sudo mv * /usr/local/bin/ && \
   FARMER_V=$(echo $(subspace-farmer --version) | grep -ow '[0-9]*.[0-9]*.[0-9]*') && \
   SUBSPACE_V=$(echo $(subspace-node --version) | grep -ow '[0-9]*.[0-9]*.[0-9]*') && \
-  echo -e "\n\nrelease >> ${VER}.\nsubspace-farmer >>> v${FARMER_V}.\nsubspace-node > v${SUBSPACE_V}.\n\n"
+  echo -e "\nrelease >> ${VER}.\nsubspace-farmer >>> v${FARMER_V}.\nsubspace-node > v${SUBSPACE_V}.\n"
 fi && \
 cd $HOME && \
 rm -Rvf $HOME/subspace >/dev/null 2>&1 && \
@@ -38,6 +38,6 @@ sudo systemctl restart subspaced && \
 sleep 20
 sudo systemctl restart subspaced-farmer
 
-echo -e "\nCheck block height:\n\e[42msudo journalctl -fu subspaced -o cat | grep -Eo 'best: #[0-9]*'\e[0m\n"
-
-echo -e "\n\nCheck log:\n\e[42msudo journalctl -fu farmerd -o cat\e[0m\n"
+echo -e "\n\e[40m\e[92mUpdate installed!!\e[0m\n"
+echo -e "Check block height:\n\e[42msudo journalctl -fu subspaced -o cat | grep -Eo 'best: #[0-9]*'\e[0m\n"
+echo -e "Check log:\n\e[42msudo journalctl -u subspaced-farmer -f -o cat\e[0m\n"
