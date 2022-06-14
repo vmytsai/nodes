@@ -39,6 +39,7 @@ else
 
   cd $HOME && \
   rm -Rvf $HOME/subspace >/dev/null 2>&1 && \
+  rm -rf $HOME/subspace-farmer && rm -rf $HOME/subspace-node && \
   sudo systemctl daemon-reload && \
   sudo systemctl restart subspaced && \
   sleep 20
@@ -47,5 +48,4 @@ else
   echo -e "\n\e[40m\e[92mUpdate installed!!\e[0m\n"
   echo -e "Check block height:\n\e[42msudo journalctl -fu subspaced -o cat | grep -Eo 'best: #[0-9]*'\e[0m\n"
   echo -e "Check log:\n\e[42msudo journalctl -u subspaced-farmer -f -o cat\e[0m\n"
-fi && \
-rm -rf $HOME/subspace-farmer && rm -rf $HOME/subspace-node
+fi
