@@ -32,7 +32,7 @@ if [[ $(./subspace-farmer --version) != "" || $(./subspace-node --version) != ""
   sudo mv * /usr/local/bin/ && \
   FARMER_V=$(echo $(subspace-farmer --version) | grep -ow '[0-9]*.[0-9]*.[0-9]*') && \
   SUBSPACE_V=$(echo $(subspace-node --version) | grep -ow '[0-9]*.[0-9]*.*') && \
-  echo -e "\nrelease >> ${VER}.\nsubspace-farmer >>> v${FARMER_V}.\nsubspace-node > v${SUBSPACE_V}.\n"
+  echo -e "\nrelease >> ${VER}.\nsubspace-farmer >> v${FARMER_V}.\nsubspace-node >> ${SUBSPACE_V}.\n"
 
   cd $HOME && \
   rm -Rvf $HOME/subspace >/dev/null 2>&1 && \
