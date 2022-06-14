@@ -8,6 +8,12 @@ if exists curl; then
 	echo ''
 else
   sudo apt update && sudo apt install curl -y < "/dev/null"
+
+if exists jq; then
+	echo ''
+else
+  sudo apt update && sudo apt install jq -y < "/dev/null"
+
 fi
 bash_profile=$HOME/.bash_profile
 if [ -f "$bash_profile" ]; then
