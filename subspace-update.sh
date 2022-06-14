@@ -47,5 +47,5 @@ else
 
   echo -e "\n\e[40m\e[92mUpdate installed!!\e[0m\n"
   echo -e "Check block height:\n\e[42msudo journalctl -fu subspaced -o cat | grep -Eo 'best: #[0-9]*'\e[0m\n"
-  echo -e "Check log:\n\e[42msudo journalctl -u subspaced-farmer -f -o cat\e[0m\n"
+  echo -e "Check log:\n\e[42msudo journalctl -u subspaced-farmer -f -o cat\e[0m"
 fi
