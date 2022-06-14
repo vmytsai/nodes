@@ -24,20 +24,22 @@ wget https://github.com/subspace/subspace/releases/download/${VER}/subspace-farm
 wget https://github.com/subspace/subspace/releases/download/${VER}/subspace-node-ubuntu-x86_64-${VER} -qO subspace-node; \
 sudo chmod +x * && \
 if [[ $(./subspace-farmer --version) == "" || $(./subspace-node --version) == "" ]]; then
-  echo -e "\n\nWTF?!? \e[31mSomething went wrong!!\e[39m\nWrite me on telegram: @vlad.mytsai\n\n"
+  echo -e "\n\nWTF?!? \e[31mSomething went wrong!! Update not installed :(\e[39m\n"
 else
   sudo mv * /usr/local/bin/ && \
   FARMER_V=$(echo $(subspace-farmer --version) | grep -ow '[0-9]*.[0-9]*.[0-9]*') && \
-  SUBSPACE_V=$(echo $(subspace-node --version) | grep -ow '[0-9]*.[0-9]*.[0-9]*') && \
+  SUBSPACE_V=$(echo $(subspace-node --version) | grep -ow '[0-9]*.[0-9]*.*') && \
   echo -e "\nrelease >> ${VER}.\nsubspace-farmer >>> v${FARMER_V}.\nsubspace-node > v${SUBSPACE_V}.\n"
-fi && \
-cd $HOME && \
-rm -Rvf $HOME/subspace >/dev/null 2>&1 && \
-sudo systemctl daemon-reload && \
-sudo systemctl restart subspaced && \
-sleep 20
-sudo systemctl restart subspaced-farmer
 
-echo -e "\n\e[40m\e[92mUpdate installed!!\e[0m\n"
-echo -e "Check block height:\n\e[42msudo journalctl -fu subspaced -o cat | grep -Eo 'best: #[0-9]*'\e[0m\n"
-echo -e "Check log:\n\e[42msudo journalctl -u subspaced-farmer -f -o cat\e[0m\n"
+  cd $HOME && \
+  rm -Rvf $HOME/subspace >/dev/null 2>&1 && \
+  sudo systemctl daemon-reload && \
+  sudo systemctl restart subspaced && \
+  sleep 20
+  sudo systemctl restart subspaced-farmer
+
+  echo -e "\n\e[40m\e[92mUpdate installed!!\e[0m\n"
+  echo -e "Check block height:\n\e[42msudo journalctl -fu subspaced -o cat | grep -Eo 'best: #[0-9]*'\e[0m\n"
+  echo -e "Check log:\n\e[42msudo journalctl -u subspaced-farmer -f -o cat\e[0m\n"
+fi && \
+rm -rf $HOME/subspace-farmer && rm -rf $HOME/subspace-node
