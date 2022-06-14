@@ -44,9 +44,9 @@ if [[ $(./subspace-farmer --version) != "" || $(./subspace-node --version) != ""
 
   echo -e "\n\e[40m\e[92mUpdate installed!!\e[0m\n"
   echo -e "Check block height:\n\e[42msudo journalctl -fu subspaced -o cat | grep -Eo 'best: #[0-9]*'\e[0m\n"
-  echo -e "Check log:\n\e[42msudo journalctl -u subspaced-farmer -f -o cat\e[0m"
+  echo -e "Check log:\n\e[42msudo journalctl -u subspaced-farmer -f -o cat\e[0m\n"
 else
   rm -Rvf $HOME/subspace >/dev/null 2>&1 && \
   rm -rf $HOME/subspace-update.sh && \
-  echo -e "\n\nWTF?!? \e[31mSomething went wrong!!\e[39m Update not installed :("
+  echo -e "\n\nWTF?!? \e[31mSomething went wrong!!\e[39m Update not installed :(\n"
 fi
