@@ -34,13 +34,10 @@ fi && \
 cd $HOME && \
 rm -Rvf $HOME/subspace >/dev/null 2>&1 && \
 sudo systemctl daemon-reload && \
-sudo systemctl restart subspaced
-sleep 30
+sudo systemctl restart subspaced && \
+sleep 20
 sudo systemctl restart subspaced-farmer
 
-echo -e "\nCheck block height:\n"
-echo -e "\e[42msudo journalctl -fu subspaced -o cat | grep -Eo 'best: #[0-9]*'\e[0m\n"
+echo -e "\nCheck block height:\n\e[42msudo journalctl -fu subspaced -o cat | grep -Eo 'best: #[0-9]*'\e[0m\n"
 
-
-echo -e "\n\nCheck log:\n"
-echo -e "\e[42msudo journalctl -fu farmerd -o cat\e[0m\n"
+echo -e "\n\nCheck log:\n\e[42msudo journalctl -fu farmerd -o cat\e[0m\n"
