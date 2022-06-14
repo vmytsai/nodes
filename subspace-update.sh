@@ -36,7 +36,7 @@ if [[ $(./subspace-farmer --version) != "" || $(./subspace-node --version) != ""
 
   cd $HOME && \
   rm -Rvf $HOME/subspace >/dev/null 2>&1 && \
-  rm -rf $HOME/subspace-farmer && rm -rf $HOME/subspace-node && \
+  rm -rf $HOME/subspace-update.sh && \
   sudo systemctl daemon-reload && \
   sudo systemctl restart subspaced && \
   sleep 20
@@ -47,6 +47,6 @@ if [[ $(./subspace-farmer --version) != "" || $(./subspace-node --version) != ""
   echo -e "Check log:\n\e[42msudo journalctl -u subspaced-farmer -f -o cat\e[0m"
 else
   rm -Rvf $HOME/subspace >/dev/null 2>&1 && \
-  rm -rf $HOME/subspace-farmer && rm -rf $HOME/subspace-node && \
+  rm -rf $HOME/subspace-update.sh && \
   echo -e "\n\nWTF?!? \e[31mSomething went wrong!!\e[39m Update not installed :("
 fi
