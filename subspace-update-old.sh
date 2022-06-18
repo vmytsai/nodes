@@ -24,7 +24,7 @@ echo -e "\n\nUpdating... Please wait :)\n"
 
 mkdir $HOME/subspace >/dev/null 2>&1 && \
 cd $HOME/subspace && \
-VER="gemini-1b-2022-jun-13" && \
+VER="gemini-1b-2022-jun-10" && \
 wget https://github.com/subspace/subspace/releases/download/${VER}/subspace-farmer-ubuntu-x86_64-${VER} -qO subspace-farmer; \
 wget https://github.com/subspace/subspace/releases/download/${VER}/subspace-node-ubuntu-x86_64-${VER} -qO subspace-node; \
 sudo chmod +x * && \
