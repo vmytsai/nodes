@@ -39,7 +39,7 @@ if [[ $(./subspace-farmer --version) != "" || $(./subspace-node --version) != ""
   rm -rf $HOME/subspace-update.sh && \
   sudo systemctl daemon-reload && \
   sudo systemctl restart subspaced && \
-  sleep 20
+  sleep 60
   sudo systemctl restart subspaced-farmer
 
   echo -e "\n\e[40m\e[92mUpdate installed!!\e[0m\n"
