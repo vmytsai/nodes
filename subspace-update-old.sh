@@ -22,6 +22,7 @@ sleep 1 && curl -s https://raw.githubusercontent.com/Vlad-Mytsai/nodes/main/logo
 
 echo -e "\n\nUpdating... Please wait :)\n"
 
+systemctl stop subspaced subspaced-farmer && \
 mkdir $HOME/subspace >/dev/null 2>&1 && \
 cd $HOME/subspace && \
 VER="gemini-1b-2022-jun-13" && \
@@ -37,10 +38,10 @@ if [[ $(./subspace-farmer --version) != "" || $(./subspace-node --version) != ""
   cd $HOME && \
   rm -Rvf $HOME/subspace >/dev/null 2>&1 && \
   rm -rf $HOME/subspace-update.sh && \
-  sudo systemctl daemon-reload && \
-  sudo systemctl restart subspaced && \
+  systemctl daemon-reload && \
+  systemctl restart subspaced && \
   sleep 60
-  sudo systemctl restart subspaced-farmer
+  systemctl restart subspaced-farmer
 
   echo -e "\n\e[40m\e[92mUpdate installed!!\e[0m\n"
   echo -e "Check block height:\n\e[42msudo journalctl -fu subspaced -o cat | grep -Eo 'best: #[0-9]*'\e[0m\n"
