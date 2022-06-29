@@ -9,4 +9,6 @@ sudo tar -xvf gear-nightly-linux-x86_64.tar.xz -C /root
 rm gear-nightly-linux-x86_64.tar.xz
 sudo systemctl restart gear
 
+rm $HOME/gear-update.sh
+
 echo -e "\n\e[40m\e[92mUpdate installed!!\e[0m\n"
