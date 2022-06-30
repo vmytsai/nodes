@@ -1,8 +1,9 @@
 #!/bin/bash
 echo -e "\n\e[40m\e[92mChecking...\e[0m\n"
+VER=http://repository.activenodes.io/snapshots/defund-private-1_2022-06-30.tar.gz
 while true
 do
-    if curl --head --silent --fail http://repository.activenodes.io/snapshots/defund-private-1_2022-06-30.tar.gz 2> /dev/null;
+    if curl --head --silent --fail $VER 2> /dev/null;
     then
         echo -e "\n\e[40m\e[92mSnapshot exists!! Start updating...\e[0m\n"
         break
@@ -13,21 +14,20 @@ done
 
 systemctl stop defund
 
-rm -rf /root/.defund/data/state.db
-
 cd ~/.defund/
 cp data/priv_validator_state.json .
 mv data data_old
-wget http://repository.activenodes.io/snapshots/defund-private-1_2022-06-30.tar.gz
+wget $VER
 tar xzvf defund*.tar.gz
 rm defund*.tar.gz
 mv priv_validator_state.json data/
+
 systemctl restart defund
 
 
 echo -e "\n\e[40m\e[92mSnapshot updated!!\e[0m\n"
 
 echo -e "\nChech status: \e[42mcurl localhost:26657/status\e[0m\n"
-echo -e "Chech info: \e[42mcurl localhost:26657/status\e[0m\n"
+echo -e "Chech journal: \e[42mjournalctl -u defund -f -f -o cat\e[0m\n"
 
 
