@@ -24,10 +24,12 @@ mv priv_validator_state.json data/
 
 systemctl restart defund
 
-
 echo -e "\n\e[40m\e[92mSnapshot updated!!\e[0m\n"
 
 echo -e "\nChech status: \e[42mcurl localhost:26657/status\e[0m\n"
 echo -e "Chech journal: \e[42mjournalctl -u defund -f -f -o cat\e[0m\n"
 
 rm ~/defund_sn.sh 
+
+cd ~/.defund/
+rm -rf data_old
