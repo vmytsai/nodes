@@ -12,7 +12,7 @@ do
     fi
 done
 
-systemctl stop defund
+sudo systemctl stop defundd
 
 cd ~/.defund/
 cp data/priv_validator_state.json .
@@ -22,7 +22,7 @@ tar xzvf defund*.tar.gz
 rm defund*.tar.gz
 mv priv_validator_state.json data/
 
-systemctl restart defund
+sudo systemctl restart defundd
 
 echo -e "\n\e[40m\e[92mSnapshot updated!!\e[0m\n"
 
