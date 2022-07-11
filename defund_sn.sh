@@ -1,6 +1,6 @@
 #!/bin/bash
 echo -e "\n\e[40m\e[92mChecking...\e[0m\n"
-VER=http://repository.activenodes.io/snapshots/defund-private-1_2022-07-07.tar.gz
+VER=http://repository.activenodes.io/snapshots/defund-private-1_2022-07-11.tar.gz
 while true
 do
     if curl --head --silent --fail $VER 2> /dev/null;
