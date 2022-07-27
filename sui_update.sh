@@ -1,3 +1,6 @@
+#!/bin/bash
+
+sleep 1 && curl -s https://raw.githubusercontent.com/Vlad-Mytsai/nodes/main/logo.sh | bash && sleep 1
 echo -e "\n\e[40m\e[92mSUI node updating... Please wait :)\e[0m\n"
 systemctl stop suid
 sleep 3
