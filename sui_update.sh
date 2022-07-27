@@ -1,3 +1,4 @@
+echo -e "\n\e[40m\e[92mSUI node updating... Please wait :)\e[0m\n"
 systemctl stop suid
 sleep 3
 rm -rf $HOME/.sui/db
@@ -11,3 +12,4 @@ systemctl restart suid
 sleep 3
 wget -qO-  -t 1 -T 5 --header 'Content-Type: application/json' --post-data '{ "jsonrpc":"2.0", "id":1, "method":"sui_getRecentTransactions", "params":[5] }' "http://127.0.0.1:9000/" | jq
 sui --version
+echo -e "\n\e[40m\e[92mUpdate installed!!\e[0m\n"
