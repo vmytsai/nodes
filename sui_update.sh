@@ -7,6 +7,7 @@ sleep 3
 rm -rf $HOME/.sui/db
 wget -qO $HOME/.sui/genesis.blob https://github.com/MystenLabs/sui-genesis/raw/main/devnet/genesis.blob
 cd $HOME/sui
+git remote add upstream https://github.com/MystenLabs/sui
 git fetch upstream
 git checkout -B devnet --track upstream/devnet
 cargo build --release
