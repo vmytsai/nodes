@@ -81,5 +81,6 @@ sudo systemctl enable masad
 sudo systemctl restart masad
 
 echo -e "\n\e[40m\e[92mNode updated!!\e[0m\n"
+echo -e "\n\e[40m\e[92mCheck status: \e[0m\n"
 
 sudo systemctl status masad
