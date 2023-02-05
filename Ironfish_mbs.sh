@@ -176,18 +176,10 @@ function TryUntilSuccessLocalFunc() {
 function MainFunc() {
     sleep 1 && curl -s https://raw.githubusercontent.com/Vlad-Mytsai/nodes/main/logo.sh | bash && sleep 1
     echo -e "\n\e[40m\e[92mStarting Ironfish Mint/Burn/Send... Please wait :)\e[0m\n"
-    
-    MAIL=${1}
 
     BIN=$(GetBinaryFunc)
     GRAFFITI=$(echo $(${BIN} config:get blockGraffiti) | sed 's/\"//g')
 
-    if [[ ${MAIL} != "" ]]; then
-        FaucetRequestFunc "${MAIL}"
-    else
-        FaucetRequestFunc
-    fi
-    
     if [ $(echo "$(GetBalanceFunc) > 0.00000003" | bc ) -eq 1 ]; then
         TryUntilSuccessLocalFunc "MintFunc"
         if [[ ${START_FROM_ZERO} == "false" ]]; then
